@@ -18,6 +18,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
     },
 
+    accounts: {
+        type: Number,
+    },
+
     age: {
         type: Number,
     },
