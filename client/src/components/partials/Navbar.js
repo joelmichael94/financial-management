@@ -43,10 +43,10 @@ const Navbar = () => {
                             </a>
                         </li>
                         <li>
-                            <a>Settings</a>
+                            <a href="/">Settings</a>
                         </li>
                         <li>
-                            <a>Logout</a>
+                            <a href="/">Logout</a>
                         </li>
                     </ul>
                 </div>
