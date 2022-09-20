@@ -8,9 +8,9 @@ const LogoutButton = () => {
         !isAuthenticated && (
             <button
                 onClick={() => loginWithRedirect()}
-                className="btn btn-ghost normal-case text-xl bg-neutral"
+                className="btn btn-ghost normal-case text-lg bg-neutral"
             >
-                Register / Login
+                Login / Register
             </button>
         )
     );
