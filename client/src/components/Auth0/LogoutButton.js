@@ -6,7 +6,12 @@ const LogoutButton = () => {
 
     return (
         !isAuthenticated && (
-            <button onClick={() => loginWithRedirect()}>Login</button>
+            <button
+                onClick={() => loginWithRedirect()}
+                className="btn btn-ghost normal-case text-xl bg-neutral"
+            >
+                Register / Login
+            </button>
         )
     );
 };
