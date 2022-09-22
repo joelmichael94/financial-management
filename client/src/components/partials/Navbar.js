@@ -1,16 +1,20 @@
 import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+    const { logout, loginWithRedirect, isAuthenticated } = useAuth0();
+
     return (
         <div className="navbar py-4 btn-ghost rounded-b-full">
             {/* bg-base-100 */}
-            <div className="flex-1 pl-8">
-                <a
-                    href="/"
-                    className="btn-ghost normal-case text-xl pt-1 pb-2 px-10 rounded-full"
+            <div className="flex-1 pl-10">
+                <Link
+                    to="/"
+                    className="btn-ghost normal-case text-xl pt-1 pb-2 px-7 rounded font-extrabold"
                 >
                     easySave
-                </a>
+                </Link>
             </div>
             <div className="flex-none gap-2">
                 <div className="form-control">
@@ -36,18 +40,34 @@ const Navbar = () => {
                         tabIndex={0}
                         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 btn-ghost"
                     >
-                        <li>
-                            <a href="/" className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/">Settings</a>
-                        </li>
-                        <li>
-                            <a href="/">Logout</a>
-                        </li>
+                        {isAuthenticated && (
+                            <>
+                                <li>
+                                    <Link
+                                        to="/profile"
+                                        className="justify-between"
+                                    >
+                                        Profile
+                                        <span className="badge">New</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/" onClick={() => logout()}>
+                                        Logout
+                                    </Link>
+                                </li>
+                            </>
+                        )}
+                        {!isAuthenticated && (
+                            <li>
+                                <Link
+                                    to="/"
+                                    onClick={() => loginWithRedirect()}
+                                >
+                                    Login / Register
+                                </Link>
+                            </li>
+                        )}
                     </ul>
                 </div>
             </div>

@@ -1,11 +1,10 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import LoginButton from "../Auth0/LoginButton";
-import LogoutButton from "../Auth0/LogoutButton";
-import Profile from "../Auth0/Profile";
+import { LoginButton } from "../Auth0";
 import bannerTop from "../../public/bannerTop.png";
 import bannerMid from "../../public/bannerMid.jpg";
 
 const { isLoading, error } = useAuth0;
+
 export const BannerTop = () => {
     return (
         <>
@@ -27,13 +26,7 @@ export const BannerTop = () => {
                         {!error && isLoading && (
                             <h1>RELAX . . THE PAGE IS LOADING</h1>
                         )}
-                        {!error && !isLoading && (
-                            <div>
-                                <LoginButton />
-                                <LogoutButton />
-                                <Profile />
-                            </div>
-                        )}
+                        {!error && !isLoading && <LoginButton />}
                     </div>
                 </div>
                 <img src={bannerTop} alt="bannerTop" className="w-2/5" />
@@ -100,8 +93,6 @@ export const BannerMid = () => {
                         {!error && !isLoading && (
                             <div>
                                 <LoginButton />
-                                <LogoutButton />
-                                <Profile />
                             </div>
                         )}
                     </div>
