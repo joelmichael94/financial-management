@@ -1,11 +1,10 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { LoginButton } from "../Auth0";
 import bannerTop from "../../public/bannerTop.png";
 import bannerMid from "../../public/bannerMid.jpg";
-
-const { isLoading, error } = useAuth0;
+import { useNavigate } from "react-router-dom";
 
 export const BannerTop = () => {
+    const navigate = useNavigate();
+
     return (
         <>
             <div className="flex justify-evenly items-center px-48 py-44">
@@ -22,11 +21,9 @@ export const BannerTop = () => {
                         </p>
                     </div>
                     <div>
-                        {error && <p>Authentication Error</p>}
-                        {!error && isLoading && (
-                            <h1>RELAX . . THE PAGE IS LOADING</h1>
-                        )}
-                        {!error && !isLoading && <LoginButton />}
+                        <button onClick={() => navigate("/register")}>
+                            Sign Up Here
+                        </button>
                     </div>
                 </div>
                 <img src={bannerTop} alt="bannerTop" className="w-2/5" />
@@ -36,6 +33,8 @@ export const BannerTop = () => {
 };
 
 export const BannerMid = () => {
+    const navigate = useNavigate();
+
     return (
         <div className="bg-neutral flex flex-col justify-center items-center py-24">
             <div>
@@ -86,15 +85,9 @@ export const BannerMid = () => {
                     </ul>
 
                     <div>
-                        {error && <p>Authentication Error</p>}
-                        {!error && isLoading && (
-                            <h1>RELAX . . THE PAGE IS LOADING</h1>
-                        )}
-                        {!error && !isLoading && (
-                            <div>
-                                <LoginButton />
-                            </div>
-                        )}
+                        <button onClick={() => navigate("/register")}>
+                            Sign Up Here
+                        </button>
                     </div>
                 </div>
             </div>

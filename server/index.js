@@ -12,6 +12,8 @@ app.use(express.static("public"));
 const { PORT, DB_HOST, DB_PORT, DB_NAME } = process.env;
 mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`);
 
+app.use("/users", require("./api/users"));
+
 app.listen(PORT, () => console.log("Server is rolling on PORT" + PORT));
 mongoose.connection.once("open", () =>
     console.log("You are connected to MongoDB")

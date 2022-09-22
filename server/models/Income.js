@@ -18,7 +18,9 @@ const IncomeSchema = new mongoose.Schema({
         type: Number,
     },
 
-
+    image: {
+        type: String,
+    },
 });
 
 module.exports = mongoose.model("income", IncomeSchema);

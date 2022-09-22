@@ -1,13 +1,10 @@
 import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
+import { logout } from "../api/users";
 
 const Navbar = () => {
-    const { logout, loginWithRedirect, isAuthenticated } = useAuth0();
-
     return (
         <div className="navbar py-4 btn-ghost rounded-b-full">
-            {/* bg-base-100 */}
             <div className="flex-1 pl-10">
                 <Link
                     to="/"
@@ -40,34 +37,20 @@ const Navbar = () => {
                         tabIndex={0}
                         className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 btn-ghost"
                     >
-                        {isAuthenticated && (
-                            <>
-                                <li>
-                                    <Link
-                                        to="/profile"
-                                        className="justify-between"
-                                    >
-                                        Profile
-                                        <span className="badge">New</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/" onClick={() => logout()}>
-                                        Logout
-                                    </Link>
-                                </li>
-                            </>
-                        )}
-                        {!isAuthenticated && (
-                            <li>
-                                <Link
-                                    to="/"
-                                    onClick={() => loginWithRedirect()}
-                                >
-                                    Login / Register
-                                </Link>
-                            </li>
-                        )}
+                        <li>
+                            <Link to="/profile" className="justify-between">
+                                Profile
+                                <span className="badge">🔔</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/" onClick={() => logout()}>
+                                Logout
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/login">Login / Register</Link>
+                        </li>
                     </ul>
                 </div>
             </div>

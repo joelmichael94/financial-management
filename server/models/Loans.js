@@ -16,6 +16,7 @@ const LoanSchema = new mongoose.Schema({
 
     amount: {
         type: Number,
+        default: 0,
     },
 
     date: {
@@ -31,6 +32,10 @@ const LoanSchema = new mongoose.Schema({
         endMonth: {
             type: Number,
         },
+    },
+
+    image: {
+        type: String,
     },
 });
 
