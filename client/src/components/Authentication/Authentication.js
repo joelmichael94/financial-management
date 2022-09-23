@@ -11,9 +11,9 @@ export const Login = () => {
         password: "",
     });
 
-    const mutation = useMutation((user) => login(user), {
+    const mutation = useMutation(async (user) => await login(user), {
         onSuccess: () => {
-            navigate("/accounts");
+            navigate("/daily");
         },
     });
 

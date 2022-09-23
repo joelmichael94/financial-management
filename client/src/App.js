@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Foot from "./components/partials/Footer";
 import Navbar from "./components/partials/Navbar";
@@ -10,15 +10,30 @@ import {
     AdminRoutes,
 } from "./components/Routes";
 import { Login, Register } from "./components/Authentication/Authentication";
-import { Accounts } from "./components/Accounts/Accounts";
+import { Daily, Monthly, Weekly } from "./components/Accounts/Accounts";
+import { checkAuth } from "./components/api/users";
 
 function App() {
-    // const [user, setUser] = useState(true);
+    const { isAuth, user } = checkAuth();
 
     return (
         <div>
             <Routes>
-                <Route exact path="/" element={<ChooseRoutes />} />
+                <Route
+                    exact
+                    path="/"
+                    element={
+                        isAuth && user ? (
+                            <>
+                                <Navbar />
+                                <Daily />
+                                <Foot />
+                            </>
+                        ) : (
+                            <ChooseRoutes />
+                        )
+                    }
+                />
 
                 <Route element={<GuestRoutes />}>
                     <Route
@@ -55,11 +70,31 @@ function App() {
 
                 <Route element={<CustomerRoutes />}>
                     <Route
-                        path="/accounts"
+                        path="/daily"
                         element={
                             <>
                                 <Navbar />
-                                <Accounts />
+                                <Daily />
+                                <Foot />
+                            </>
+                        }
+                    />
+                    <Route
+                        path="/weekly"
+                        element={
+                            <>
+                                <Navbar />
+                                <Weekly />
+                                <Foot />
+                            </>
+                        }
+                    />
+                    <Route
+                        path="/monthly"
+                        element={
+                            <>
+                                <Navbar />
+                                <Monthly />
                                 <Foot />
                             </>
                         }
