@@ -12,6 +12,20 @@ import {
     Saturday,
     Sunday,
 } from "./Days";
+import {
+    April,
+    August,
+    December,
+    February,
+    January,
+    July,
+    June,
+    March,
+    May,
+    November,
+    October,
+    September,
+} from "./Months";
 
 export const Period = () => {
     return (
@@ -145,6 +159,30 @@ export const Weekly = () => {
     );
 };
 
+export const Monthly = () => {
+    return (
+        <div>
+            {<Period />}
+            {<Totals />}
+            {<AddTransactionBttn />}
+            <div className="mb-10 grid grid-cols-3 gap-5 mx-5">
+                <January />
+                <February />
+                <March />
+                <April />
+                <May />
+                <June />
+                <July />
+                <August />
+                <September />
+                <October />
+                <November />
+                <December />
+            </div>
+        </div>
+    );
+};
+
 export const Totals = () => {
     const { data, error, isLoading, isError } = useQuery(
         ["transactions"],
@@ -231,20 +269,6 @@ export const Totals = () => {
                 <h1 className="text-red-500">Expenses: RM {expense}</h1>
                 <h1 className="text-yellow-400">Balance: RM {balance}</h1>
             </div>
-        </div>
-    );
-};
-
-export const Monthly = () => {
-    return (
-        <div>
-            {<Period />}
-            {<Totals />}
-            {<AddTransactionBttn />}
-            <h1>week 1 - 5 transaction results</h1>
-            <p>1 - 5 rows for each week</p>
-            <h3>show the week start and end date</h3>
-            <h3>show the income, expenses, balance</h3>
         </div>
     );
 };

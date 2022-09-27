@@ -31,20 +31,30 @@ export const Monday = () => {
                   .map((trans) => {
                       if (trans.transactionType === "Income") {
                           const date = new Date(trans.date);
-                          const now = new Date();
-                          const firstDay = now.setDate(
-                              now.getDate() -
-                                  now.getDay() +
-                                  (now.getDay() === 0 ? -6 : 1)
-                          );
 
-                          const lastDay = now.setDate(
-                              now.getDate() - (now.getDay() - 1) + 6
-                          );
+                          const weekStart = new Date();
 
-                          const today = date.getTime();
-                          if (today >= firstDay && today <= lastDay) {
+                          const firstDay =
+                              weekStart.getDate() -
+                              weekStart.getDay() +
+                              (weekStart.getDay() === 0 ? -6 : 1);
+
+                          weekStart.setDate(firstDay);
+
+                          weekStart.setHours(0, 0, 0, 0);
+
+                          const weekEnd = new Date();
+
+                          const lastDay =
+                              weekEnd.getDate() - (weekEnd.getDay() - 1) + 6;
+
+                          weekEnd.setDate(lastDay);
+
+                          weekEnd.setHours(0, 0, 0, 0);
+
+                          if (date >= weekStart && date <= weekEnd) {
                               const monday = date.getDay();
+
                               if (monday === 1) {
                                   return trans.amount;
                               }
@@ -61,20 +71,30 @@ export const Monday = () => {
                   .map((trans) => {
                       if (trans.transactionType === "Expense") {
                           const date = new Date(trans.date);
-                          const now = new Date();
-                          const firstDay = now.setDate(
-                              now.getDate() -
-                                  now.getDay() +
-                                  (now.getDay() === 0 ? -6 : 1)
-                          );
 
-                          const lastDay = now.setDate(
-                              now.getDate() - (now.getDay() - 1) + 6
-                          );
+                          const weekStart = new Date();
 
-                          const today = date.getTime();
-                          if (today >= firstDay && today <= lastDay) {
+                          const firstDay =
+                              weekStart.getDate() -
+                              weekStart.getDay() +
+                              (weekStart.getDay() === 0 ? -6 : 1);
+
+                          weekStart.setDate(firstDay);
+
+                          weekStart.setHours(0, 0, 0, 0);
+
+                          const weekEnd = new Date();
+
+                          const lastDay =
+                              weekEnd.getDate() - (weekEnd.getDay() - 1) + 6;
+
+                          weekEnd.setDate(lastDay);
+
+                          weekEnd.setHours(0, 0, 0, 0);
+
+                          if (date >= weekStart && date <= weekEnd) {
                               const monday = date.getDay();
+
                               if (monday === 1) {
                                   return trans.amount;
                               }
@@ -134,20 +154,30 @@ export const Tuesday = () => {
                   .map((trans) => {
                       if (trans.transactionType === "Income") {
                           const date = new Date(trans.date);
-                          const now = new Date();
-                          const firstDay = now.setDate(
-                              now.getDate() -
-                                  now.getDay() +
-                                  (now.getDay() === 0 ? -6 : 1)
-                          );
 
-                          const lastDay = now.setDate(
-                              now.getDate() - (now.getDay() - 1) + 6
-                          );
+                          const weekStart = new Date();
 
-                          const today = date.getTime();
-                          if (today >= firstDay && today <= lastDay) {
+                          const firstDay =
+                              weekStart.getDate() -
+                              weekStart.getDay() +
+                              (weekStart.getDay() === 0 ? -6 : 1);
+
+                          weekStart.setDate(firstDay);
+
+                          weekStart.setHours(0, 0, 0, 0);
+
+                          const weekEnd = new Date();
+
+                          const lastDay =
+                              weekEnd.getDate() - (weekEnd.getDay() - 1) + 6;
+
+                          weekEnd.setDate(lastDay);
+
+                          weekEnd.setHours(0, 0, 0, 0);
+
+                          if (date >= weekStart && date <= weekEnd) {
                               const tuesday = date.getDay();
+
                               if (tuesday === 2) {
                                   return trans.amount;
                               }
@@ -164,21 +194,31 @@ export const Tuesday = () => {
                   .map((trans) => {
                       if (trans.transactionType === "Expense") {
                           const date = new Date(trans.date);
-                          const now = new Date();
-                          const firstDay = now.setDate(
-                              now.getDate() -
-                                  now.getDay() +
-                                  (now.getDay() === 0 ? -6 : 1)
-                          );
 
-                          const lastDay = now.setDate(
-                              now.getDate() - (now.getDay() - 1) + 6
-                          );
+                          const weekStart = new Date();
 
-                          const today = date.getTime();
-                          if (today >= firstDay && today <= lastDay) {
-                              const tuesday = date.getDay();
-                              if (tuesday === 2) {
+                          const firstDay =
+                              weekStart.getDate() -
+                              weekStart.getDay() +
+                              (weekStart.getDay() === 0 ? -6 : 1);
+
+                          weekStart.setDate(firstDay);
+
+                          weekStart.setHours(0, 0, 0, 0);
+
+                          const weekEnd = new Date();
+
+                          const lastDay =
+                              weekEnd.getDate() - (weekEnd.getDay() - 1) + 6;
+
+                          weekEnd.setDate(lastDay);
+
+                          weekEnd.setHours(0, 0, 0, 0);
+
+                          if (date >= weekStart && date <= weekEnd) {
+                              const monday = date.getDay();
+
+                              if (monday === 2) {
                                   return trans.amount;
                               }
                           }
@@ -237,20 +277,30 @@ export const Wednesday = () => {
                   .map((trans) => {
                       if (trans.transactionType === "Income") {
                           const date = new Date(trans.date);
-                          const now = new Date();
-                          const firstDay = now.setDate(
-                              now.getDate() -
-                                  now.getDay() +
-                                  (now.getDay() === 0 ? -6 : 1)
-                          );
 
-                          const lastDay = now.setDate(
-                              now.getDate() - (now.getDay() - 1) + 6
-                          );
+                          const weekStart = new Date();
 
-                          const today = date.getTime();
-                          if (today >= firstDay && today <= lastDay) {
+                          const firstDay =
+                              weekStart.getDate() -
+                              weekStart.getDay() +
+                              (weekStart.getDay() === 0 ? -6 : 1);
+
+                          weekStart.setDate(firstDay);
+
+                          weekStart.setHours(0, 0, 0, 0);
+
+                          const weekEnd = new Date();
+
+                          const lastDay =
+                              weekEnd.getDate() - (weekEnd.getDay() - 1) + 6;
+
+                          weekEnd.setDate(lastDay);
+
+                          weekEnd.setHours(0, 0, 0, 0);
+
+                          if (date >= weekStart && date <= weekEnd) {
                               const wednesday = date.getDay();
+
                               if (wednesday === 3) {
                                   return trans.amount;
                               }
@@ -267,20 +317,30 @@ export const Wednesday = () => {
                   .map((trans) => {
                       if (trans.transactionType === "Expense") {
                           const date = new Date(trans.date);
-                          const now = new Date();
-                          const firstDay = now.setDate(
-                              now.getDate() -
-                                  now.getDay() +
-                                  (now.getDay() === 0 ? -6 : 1)
-                          );
 
-                          const lastDay = now.setDate(
-                              now.getDate() - (now.getDay() - 1) + 6
-                          );
+                          const weekStart = new Date();
 
-                          const today = date.getTime();
-                          if (today >= firstDay && today <= lastDay) {
+                          const firstDay =
+                              weekStart.getDate() -
+                              weekStart.getDay() +
+                              (weekStart.getDay() === 0 ? -6 : 1);
+
+                          weekStart.setDate(firstDay);
+
+                          weekStart.setHours(0, 0, 0, 0);
+
+                          const weekEnd = new Date();
+
+                          const lastDay =
+                              weekEnd.getDate() - (weekEnd.getDay() - 1) + 6;
+
+                          weekEnd.setDate(lastDay);
+
+                          weekEnd.setHours(0, 0, 0, 0);
+
+                          if (date >= weekStart && date <= weekEnd) {
                               const wednesday = date.getDay();
+
                               if (wednesday === 3) {
                                   return trans.amount;
                               }
@@ -340,20 +400,30 @@ export const Thursday = () => {
                   .map((trans) => {
                       if (trans.transactionType === "Income") {
                           const date = new Date(trans.date);
-                          const now = new Date();
-                          const firstDay = now.setDate(
-                              now.getDate() -
-                                  now.getDay() +
-                                  (now.getDay() === 0 ? -6 : 1)
-                          );
 
-                          const lastDay = now.setDate(
-                              now.getDate() - (now.getDay() - 1) + 6
-                          );
+                          const weekStart = new Date();
 
-                          const today = date.getTime();
-                          if (today >= firstDay && today <= lastDay) {
+                          const firstDay =
+                              weekStart.getDate() -
+                              weekStart.getDay() +
+                              (weekStart.getDay() === 0 ? -6 : 1);
+
+                          weekStart.setDate(firstDay);
+
+                          weekStart.setHours(0, 0, 0, 0);
+
+                          const weekEnd = new Date();
+
+                          const lastDay =
+                              weekEnd.getDate() - (weekEnd.getDay() - 1) + 6;
+
+                          weekEnd.setDate(lastDay);
+
+                          weekEnd.setHours(0, 0, 0, 0);
+
+                          if (date >= weekStart && date <= weekEnd) {
                               const thursday = date.getDay();
+
                               if (thursday === 4) {
                                   return trans.amount;
                               }
@@ -370,20 +440,30 @@ export const Thursday = () => {
                   .map((trans) => {
                       if (trans.transactionType === "Expense") {
                           const date = new Date(trans.date);
-                          const now = new Date();
-                          const firstDay = now.setDate(
-                              now.getDate() -
-                                  now.getDay() +
-                                  (now.getDay() === 0 ? -6 : 1)
-                          );
 
-                          const lastDay = now.setDate(
-                              now.getDate() - (now.getDay() - 1) + 6
-                          );
+                          const weekStart = new Date();
 
-                          const today = date.getTime();
-                          if (today >= firstDay && today <= lastDay) {
+                          const firstDay =
+                              weekStart.getDate() -
+                              weekStart.getDay() +
+                              (weekStart.getDay() === 0 ? -6 : 1);
+
+                          weekStart.setDate(firstDay);
+
+                          weekStart.setHours(0, 0, 0, 0);
+
+                          const weekEnd = new Date();
+
+                          const lastDay =
+                              weekEnd.getDate() - (weekEnd.getDay() - 1) + 6;
+
+                          weekEnd.setDate(lastDay);
+
+                          weekEnd.setHours(0, 0, 0, 0);
+
+                          if (date >= weekStart && date <= weekEnd) {
                               const thursday = date.getDay();
+
                               if (thursday === 4) {
                                   return trans.amount;
                               }
@@ -443,20 +523,30 @@ export const Friday = () => {
                   .map((trans) => {
                       if (trans.transactionType === "Income") {
                           const date = new Date(trans.date);
-                          const now = new Date();
-                          const firstDay = now.setDate(
-                              now.getDate() -
-                                  now.getDay() +
-                                  (now.getDay() === 0 ? -6 : 1)
-                          );
 
-                          const lastDay = now.setDate(
-                              now.getDate() - (now.getDay() - 1) + 6
-                          );
+                          const weekStart = new Date();
 
-                          const today = date.getTime();
-                          if (today >= firstDay && today <= lastDay) {
+                          const firstDay =
+                              weekStart.getDate() -
+                              weekStart.getDay() +
+                              (weekStart.getDay() === 0 ? -6 : 1);
+
+                          weekStart.setDate(firstDay);
+
+                          weekStart.setHours(0, 0, 0, 0);
+
+                          const weekEnd = new Date();
+
+                          const lastDay =
+                              weekEnd.getDate() - (weekEnd.getDay() - 1) + 6;
+
+                          weekEnd.setDate(lastDay);
+
+                          weekEnd.setHours(0, 0, 0, 0);
+
+                          if (date >= weekStart && date <= weekEnd) {
                               const friday = date.getDay();
+
                               if (friday === 5) {
                                   return trans.amount;
                               }
@@ -473,20 +563,30 @@ export const Friday = () => {
                   .map((trans) => {
                       if (trans.transactionType === "Expense") {
                           const date = new Date(trans.date);
-                          const now = new Date();
-                          const firstDay = now.setDate(
-                              now.getDate() -
-                                  now.getDay() +
-                                  (now.getDay() === 0 ? -6 : 1)
-                          );
 
-                          const lastDay = now.setDate(
-                              now.getDate() - (now.getDay() - 1) + 6
-                          );
+                          const weekStart = new Date();
 
-                          const today = date.getTime();
-                          if (today >= firstDay && today <= lastDay) {
+                          const firstDay =
+                              weekStart.getDate() -
+                              weekStart.getDay() +
+                              (weekStart.getDay() === 0 ? -6 : 1);
+
+                          weekStart.setDate(firstDay);
+
+                          weekStart.setHours(0, 0, 0, 0);
+
+                          const weekEnd = new Date();
+
+                          const lastDay =
+                              weekEnd.getDate() - (weekEnd.getDay() - 1) + 6;
+
+                          weekEnd.setDate(lastDay);
+
+                          weekEnd.setHours(0, 0, 0, 0);
+
+                          if (date >= weekStart && date <= weekEnd) {
                               const friday = date.getDay();
+
                               if (friday === 5) {
                                   return trans.amount;
                               }
@@ -546,20 +646,30 @@ export const Saturday = () => {
                   .map((trans) => {
                       if (trans.transactionType === "Income") {
                           const date = new Date(trans.date);
-                          const now = new Date();
-                          const firstDay = now.setDate(
-                              now.getDate() -
-                                  now.getDay() +
-                                  (now.getDay() === 0 ? -6 : 1)
-                          );
 
-                          const lastDay = now.setDate(
-                              now.getDate() - (now.getDay() - 1) + 6
-                          );
+                          const weekStart = new Date();
 
-                          const today = date.getTime();
-                          if (today >= firstDay && today <= lastDay) {
+                          const firstDay =
+                              weekStart.getDate() -
+                              weekStart.getDay() +
+                              (weekStart.getDay() === 0 ? -6 : 1);
+
+                          weekStart.setDate(firstDay);
+
+                          weekStart.setHours(0, 0, 0, 0);
+
+                          const weekEnd = new Date();
+
+                          const lastDay =
+                              weekEnd.getDate() - (weekEnd.getDay() - 1) + 6;
+
+                          weekEnd.setDate(lastDay);
+
+                          weekEnd.setHours(0, 0, 0, 0);
+
+                          if (date >= weekStart && date <= weekEnd) {
                               const saturday = date.getDay();
+
                               if (saturday === 6) {
                                   return trans.amount;
                               }
@@ -576,20 +686,30 @@ export const Saturday = () => {
                   .map((trans) => {
                       if (trans.transactionType === "Expense") {
                           const date = new Date(trans.date);
-                          const now = new Date();
-                          const firstDay = now.setDate(
-                              now.getDate() -
-                                  now.getDay() +
-                                  (now.getDay() === 0 ? -6 : 1)
-                          );
 
-                          const lastDay = now.setDate(
-                              now.getDate() - (now.getDay() - 1) + 6
-                          );
+                          const weekStart = new Date();
 
-                          const today = date.getTime();
-                          if (today >= firstDay && today <= lastDay) {
+                          const firstDay =
+                              weekStart.getDate() -
+                              weekStart.getDay() +
+                              (weekStart.getDay() === 0 ? -6 : 1);
+
+                          weekStart.setDate(firstDay);
+
+                          weekStart.setHours(0, 0, 0, 0);
+
+                          const weekEnd = new Date();
+
+                          const lastDay =
+                              weekEnd.getDate() - (weekEnd.getDay() - 1) + 6;
+
+                          weekEnd.setDate(lastDay);
+
+                          weekEnd.setHours(0, 0, 0, 0);
+
+                          if (date >= weekStart && date <= weekEnd) {
                               const saturday = date.getDay();
+
                               if (saturday === 6) {
                                   return trans.amount;
                               }
@@ -649,20 +769,30 @@ export const Sunday = () => {
                   .map((trans) => {
                       if (trans.transactionType === "Income") {
                           const date = new Date(trans.date);
-                          const now = new Date();
-                          const firstDay = now.setDate(
-                              now.getDate() -
-                                  now.getDay() +
-                                  (now.getDay() === 0 ? -6 : 1)
-                          );
 
-                          const lastDay = now.setDate(
-                              now.getDate() - (now.getDay() - 1) + 6
-                          );
+                          const weekStart = new Date();
 
-                          const today = date.getTime();
-                          if (today >= firstDay && today <= lastDay) {
+                          const firstDay =
+                              weekStart.getDate() -
+                              weekStart.getDay() +
+                              (weekStart.getDay() === 0 ? -6 : 1);
+
+                          weekStart.setDate(firstDay);
+
+                          weekStart.setHours(0, 0, 0, 0);
+
+                          const weekEnd = new Date();
+
+                          const lastDay =
+                              weekEnd.getDate() - (weekEnd.getDay() - 1) + 6;
+
+                          weekEnd.setDate(lastDay);
+
+                          weekEnd.setHours(0, 0, 0, 0);
+
+                          if (date >= weekStart && date <= weekEnd) {
                               const sunday = date.getDay();
+
                               if (sunday === 0) {
                                   return trans.amount;
                               }
@@ -679,20 +809,30 @@ export const Sunday = () => {
                   .map((trans) => {
                       if (trans.transactionType === "Expense") {
                           const date = new Date(trans.date);
-                          const now = new Date();
-                          const firstDay = now.setDate(
-                              now.getDate() -
-                                  now.getDay() +
-                                  (now.getDay() === 0 ? -6 : 1)
-                          );
 
-                          const lastDay = now.setDate(
-                              now.getDate() - (now.getDay() - 1) + 6
-                          );
+                          const weekStart = new Date();
 
-                          const today = date.getTime();
-                          if (today >= firstDay && today <= lastDay) {
+                          const firstDay =
+                              weekStart.getDate() -
+                              weekStart.getDay() +
+                              (weekStart.getDay() === 0 ? -6 : 1);
+
+                          weekStart.setDate(firstDay);
+
+                          weekStart.setHours(0, 0, 0, 0);
+
+                          const weekEnd = new Date();
+
+                          const lastDay =
+                              weekEnd.getDate() - (weekEnd.getDay() - 1) + 6;
+
+                          weekEnd.setDate(lastDay);
+
+                          weekEnd.setHours(0, 0, 0, 0);
+
+                          if (date >= weekStart && date <= weekEnd) {
                               const sunday = date.getDay();
+
                               if (sunday === 0) {
                                   return trans.amount;
                               }
