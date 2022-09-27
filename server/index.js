@@ -13,6 +13,7 @@ const { PORT, DB_HOST, DB_PORT, DB_NAME } = process.env;
 mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`);
 
 app.use("/users", require("./api/users"));
+app.use("/transactions", require("./api/transactions"));
 
 app.listen(PORT, () => console.log("Server is rolling on PORT" + PORT));
 mongoose.connection.once("open", () =>

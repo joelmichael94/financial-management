@@ -37,13 +37,20 @@ export const Login = () => {
                 />
             </div>
             <div>
-                <label>Password</label>
                 <input
                     type="password"
                     name="password"
                     onChange={onChangeHandler}
-                    className="border border-slate-500 px-2 py-1 rounded m-2"
+                    className="border border-slate-500 px-2 py-1 rounded m-2 peer placeholder-transparent"
+                    id="password"
+                    placeholder="Password"
                 />
+                <label
+                    htmlFor="password"
+                    className="absolute left-0 -top-3.5 text-neutral text-sm peer-placeholder-shown:text-base text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-neutral peer-focus:text-sm"
+                >
+                    Password
+                </label>
             </div>
             <button
                 onClick={onSubmitHandler}

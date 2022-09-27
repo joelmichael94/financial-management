@@ -8,10 +8,11 @@ const path = require("path");
 
 // CLIENT REQUESTS
 // GET ALL TRANSACTIONS
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
     try {
-        let transactions = await Transaction.find({ user: req.user._id });
-
+        let transactions = await Transaction.find({
+            userId: req.user._id,
+        });
         if (transactions.length == 0)
             return res.json({ message: "No transactions found" });
 
@@ -24,8 +25,43 @@ router.get("/", async (req, res) => {
     }
 });
 
+// GET WEEKLY TRANSACTIONS
+router.get("/weekly", auth, async (req, res) => {
+    try {
+        let transactions = await Transaction.find({ userId: req.user._id });
+
+        if (transactions.length == 0) {
+            return res.json({ message: "No weekly transactions found" });
+        }
+
+        const now = new Date();
+        const firstDay = new Date(
+            now.setDate(
+                now.getDate() - now.getDay() + (now.getDay() === 0 ? -6 : 1)
+            )
+        );
+        const lastDay = new Date(
+            now.setDate(now.getDate() - (now.getDay() - 1) + 6)
+        );
+
+        const filters = {
+            date: {
+                $gte: firstDay,
+                $lt: lastDay,
+            },
+        };
+
+        return res.json(transactions.find({}).where(filters));
+    } catch (e) {
+        return res.status(400).json({
+            e,
+            message: "Failed to fetch weekly transactions",
+        });
+    }
+});
+
 // GET TRANSACTION BY ID
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, async (req, res) => {
     try {
         let transaction = await Transaction.findById(req.params.id);
 
@@ -44,7 +80,7 @@ router.post("/", auth, async (req, res) => {
     try {
         let form = new formidable.IncomingForm();
 
-        form.parse(req, (e, fields, files) => {
+        form.parse(req, async (e, fields, files) => {
             // transaction name check
             if (
                 fields.name.length < 3 ||
@@ -72,14 +108,17 @@ router.post("/", auth, async (req, res) => {
                     .json({ message: "Please select a category" });
 
             const transaction = new Transaction(fields);
-            let oldPath = files.image.filepath;
-            let newPath =
-                path.join(__dirname, "../public") +
-                `/${files.image.newFilename}-${files.image.originalFilename}`;
-            let rawData = fs.readFileSync(oldPath);
-            fs.writeFileSync(newPath, rawData);
-            transaction.image = `/${files.image.newFilename}-${files.image.originalFilename}`;
-            transaction.save();
+
+            if (files.image) {
+                let oldPath = files.image.filepath;
+                let newPath =
+                    path.join(__dirname, "../public") +
+                    `/${files.image.newFilename}-${files.image.originalFilename}`;
+                let rawData = fs.readFileSync(oldPath);
+                fs.writeFileSync(newPath, rawData);
+                transaction.image = `/${files.image.newFilename}-${files.image.originalFilename}`;
+            }
+            await transaction.save();
 
             return res.json({
                 transaction,

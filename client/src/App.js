@@ -9,8 +9,8 @@ import {
     ChooseRoutes,
     AdminRoutes,
 } from "./components/Routes";
-import { Login, Register } from "./components/Authentication/Authentication";
-import { Daily, Monthly, Weekly } from "./components/Accounts/Accounts";
+import { Login, Register } from "./components/Authentication";
+import { Daily, Monthly, Weekly } from "./components/Customer";
 import { checkAuth } from "./components/api/users";
 
 function App() {

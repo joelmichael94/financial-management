@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const TransactionSchema = new mongoose.Schema({
-    user: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
     },
@@ -16,7 +16,6 @@ const TransactionSchema = new mongoose.Schema({
 
     description: {
         type: String,
-        default: "",
     },
 
     amount: {
@@ -34,7 +33,7 @@ const TransactionSchema = new mongoose.Schema({
 
     date: {
         type: Date,
-        default: Date.now(),
+        default: new Date(),
     },
 });
 
