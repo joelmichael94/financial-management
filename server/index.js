@@ -2,15 +2,22 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
+const PORT = 8000;
 
-app.use(cors());
+mongoose.connect(
+    `mongodb+srv://quanshenjoelmichael21s:joelmichael94@jms-fs.ofi9vbd.mongodb.net/Finance?retryWrites=true&w=majority`
+);
 
-require("dotenv").config();
+// require("dotenv").config();
 app.use(express.json());
+app.use(
+    cors({
+        origin: "*",
+    })
+);
 app.use(express.static("public"));
 
-const { PORT, DB_HOST, DB_PORT, DB_NAME } = process.env;
-mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`);
+// const { PORT, DB_HOST, DB_PORT, DB_NAME } = process.env;
 
 app.use("/users", require("./api/users"));
 app.use("/transactions", require("./api/transactions"));

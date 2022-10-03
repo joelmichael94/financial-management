@@ -26,19 +26,21 @@ export const ChooseRoutes = () => {
                 <h1 className="text-4xl font-bold my-1">easySave</h1>
                 powered by Vercel
             </small>
-            <div className="h-screen w-screen flex flex-col justify-evenly items-between sm:flex-row sm:justify-evenly sm:items-center">
-                <button
-                    className="hover:animate-pulse rounded-3xl btn-ghost normal-case text-5xl px-10 py-5 font-black"
-                    onClick={() => navigate("/homepage")}
-                >
-                    New User
-                </button>
-                <button
-                    className="hover:animate-pulse rounded-3xl btn-ghost normal-case text-5xl px-10 py-5 font-black"
-                    onClick={() => navigate("/login")}
-                >
-                    Existing User
-                </button>
+            <div className="flex w-screen h-screen justify-evenly items-between sm:flex-row sm:justify-evenly sm:items-center">
+                <div className="flex flex-col items-center justify-center gap-6">
+                    <button
+                        className="w-full px-10 py-5 text-3xl font-semibold text-center normal-case border-2 hover:animate-pulse rounded-3xl btn-ghost border-slate-400"
+                        onClick={() => navigate("/homepage")}
+                    >
+                        New User
+                    </button>
+                    <button
+                        className="w-full px-10 py-5 text-3xl font-semibold normal-case border-2 hover:animate-pulse rounded-3xl btn-ghost border-slate-400"
+                        onClick={() => navigate("/login")}
+                    >
+                        Existing User
+                    </button>
+                </div>
             </div>
         </div>
     );

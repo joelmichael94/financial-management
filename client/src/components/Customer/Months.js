@@ -66,17 +66,26 @@ export const January = () => {
     const balance = income - expense;
 
     return (
-        <div className="flex justify-center items-center my-5">
-            <div className="card w-full bg-neutral shadow-xl card-compact">
+        <div className="flex items-center justify-center my-5 ">
+            <div className="w-full bg-gray-700 shadow-xl card card-compact ">
                 <div className="card-body">
-                    <h2 className="card-title">January</h2>
-                    <div className="flex justify-between items-center">
+                    <h2 className="font-bold card-title text-sky-400">
+                        January
+                    </h2>
+                    <div className="flex items-center justify-between">
                         <div>Income: RM {income}</div>
                         <div>Expenses: RM {expense}</div>
-                        <div>Balance: RM {balance}</div>
+                        <div className="font-medium text-amber-200">
+                            Balance: RM {balance}
+                        </div>
                     </div>
-                    <div className="card-actions justify-end">
-                        <Link to="/">View transactions</Link>
+                    <div className="justify-end mt-8 card-actions">
+                        <Link
+                            to="/"
+                            className="px-4 py-1 font-medium rounded-md text-slate-800 bg-sky-400 hover:bg-sky-600 hover:text-white"
+                        >
+                            View transactions
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -147,17 +156,26 @@ export const February = () => {
     const balance = income - expense;
 
     return (
-        <div className="flex justify-center items-center my-5">
-            <div className="card w-full bg-neutral shadow-xl card-compact">
+        <div className="flex items-center justify-center my-5">
+            <div className="w-full shadow-xl card bg-neutral card-compact">
                 <div className="card-body">
-                    <h2 className="card-title">February</h2>
-                    <div className="flex justify-between items-center">
+                    <h2 className="font-bold card-title text-sky-400">
+                        February
+                    </h2>
+                    <div className="flex items-center justify-between">
                         <div>Income: RM {income}</div>
                         <div>Expenses: RM {expense}</div>
-                        <div>Balance: RM {balance}</div>
+                        <div className="font-medium text-amber-200">
+                            Balance: RM {balance}
+                        </div>
                     </div>
-                    <div className="card-actions justify-end">
-                        <Link to="/">View transactions</Link>
+                    <div className="justify-end mt-8 card-actions">
+                        <Link
+                            to="/"
+                            className="px-4 py-1 font-medium rounded-md text-slate-800 bg-sky-400 hover:bg-sky-600 hover:text-white"
+                        >
+                            View transactions
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -228,17 +246,24 @@ export const March = () => {
     const balance = income - expense;
 
     return (
-        <div className="flex justify-center items-center my-5">
-            <div className="card w-full bg-neutral shadow-xl card-compact">
+        <div className="flex items-center justify-center my-5">
+            <div className="w-full bg-gray-700 shadow-xl card card-compact">
                 <div className="card-body">
-                    <h2 className="card-title">March</h2>
-                    <div className="flex justify-between items-center">
+                    <h2 className="font-bold card-title text-sky-400">March</h2>
+                    <div className="flex items-center justify-between">
                         <div>Income: RM {income}</div>
                         <div>Expenses: RM {expense}</div>
-                        <div>Balance: RM {balance}</div>
+                        <div className="font-medium text-amber-200">
+                            Balance: RM {balance}
+                        </div>
                     </div>
-                    <div className="card-actions justify-end">
-                        <Link to="/">View transactions</Link>
+                    <div className="justify-end mt-8 card-actions">
+                        <Link
+                            to="/"
+                            className="px-4 py-1 font-medium rounded-md text-slate-800 bg-sky-400 hover:bg-sky-600 hover:text-white"
+                        >
+                            View transactions
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -309,17 +334,24 @@ export const April = () => {
     const balance = income - expense;
 
     return (
-        <div className="flex justify-center items-center my-5">
-            <div className="card w-full bg-neutral shadow-xl card-compact">
+        <div className="flex items-center justify-center my-5">
+            <div className="w-full shadow-xl card bg-neutral card-compact">
                 <div className="card-body">
-                    <h2 className="card-title">April</h2>
-                    <div className="flex justify-between items-center">
+                    <h2 className="font-bold card-title text-sky-400">April</h2>
+                    <div className="flex items-center justify-between">
                         <div>Income: RM {income}</div>
                         <div>Expenses: RM {expense}</div>
-                        <div>Balance: RM {balance}</div>
+                        <div className="font-medium text-amber-200">
+                            Balance: RM {balance}
+                        </div>
                     </div>
-                    <div className="card-actions justify-end">
-                        <Link to="/">View transactions</Link>
+                    <div className="justify-end mt-8 card-actions">
+                        <Link
+                            to="/"
+                            className="px-4 py-1 font-medium rounded-md text-slate-800 bg-sky-400 hover:bg-sky-600 hover:text-white"
+                        >
+                            View transactions
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -390,17 +422,24 @@ export const May = () => {
     const balance = income - expense;
 
     return (
-        <div className="flex justify-center items-center my-5">
-            <div className="card w-full bg-neutral shadow-xl card-compact">
+        <div className="flex items-center justify-center my-5">
+            <div className="w-full bg-gray-700 shadow-xl card card-compact">
                 <div className="card-body">
-                    <h2 className="card-title">May</h2>
-                    <div className="flex justify-between items-center">
+                    <h2 className="font-bold card-title text-sky-400">May</h2>
+                    <div className="flex items-center justify-between">
                         <div>Income: RM {income}</div>
                         <div>Expenses: RM {expense}</div>
-                        <div>Balance: RM {balance}</div>
+                        <div className="font-medium text-amber-200">
+                            Balance: RM {balance}
+                        </div>
                     </div>
-                    <div className="card-actions justify-end">
-                        <Link to="/">View transactions</Link>
+                    <div className="justify-end mt-8 card-actions">
+                        <Link
+                            to="/"
+                            className="px-4 py-1 font-medium rounded-md text-slate-800 bg-sky-400 hover:bg-sky-600 hover:text-white"
+                        >
+                            View transactions
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -471,17 +510,24 @@ export const June = () => {
     const balance = income - expense;
 
     return (
-        <div className="flex justify-center items-center my-5">
-            <div className="card w-full bg-neutral shadow-xl card-compact">
+        <div className="flex items-center justify-center my-5">
+            <div className="w-full shadow-xl card bg-neutral card-compact">
                 <div className="card-body">
-                    <h2 className="card-title">June</h2>
-                    <div className="flex justify-between items-center">
+                    <h2 className="font-bold card-title text-sky-400">June</h2>
+                    <div className="flex items-center justify-between">
                         <div>Income: RM {income}</div>
                         <div>Expenses: RM {expense}</div>
-                        <div>Balance: RM {balance}</div>
+                        <div className="font-medium text-amber-200">
+                            Balance: RM {balance}
+                        </div>
                     </div>
-                    <div className="card-actions justify-end">
-                        <Link to="/">View transactions</Link>
+                    <div className="justify-end mt-8 card-actions">
+                        <Link
+                            to="/"
+                            className="px-4 py-1 font-medium rounded-md text-slate-800 bg-sky-400 hover:bg-sky-600 hover:text-white"
+                        >
+                            View transactions
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -552,17 +598,24 @@ export const July = () => {
     const balance = income - expense;
 
     return (
-        <div className="flex justify-center items-center my-5">
-            <div className="card w-full bg-neutral shadow-xl card-compact">
+        <div className="flex items-center justify-center my-5">
+            <div className="w-full bg-gray-700 shadow-xl card card-compact">
                 <div className="card-body">
-                    <h2 className="card-title">July</h2>
-                    <div className="flex justify-between items-center">
+                    <h2 className="font-bold card-title text-sky-400">July</h2>
+                    <div className="flex items-center justify-between">
                         <div>Income: RM {income}</div>
                         <div>Expenses: RM {expense}</div>
-                        <div>Balance: RM {balance}</div>
+                        <div className="font-medium text-amber-200">
+                            Balance: RM {balance}
+                        </div>
                     </div>
-                    <div className="card-actions justify-end">
-                        <Link to="/">View transactions</Link>
+                    <div className="justify-end mt-8 card-actions">
+                        <Link
+                            to="/"
+                            className="px-4 py-1 font-medium rounded-md text-slate-800 bg-sky-400 hover:bg-sky-600 hover:text-white"
+                        >
+                            View transactions
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -633,17 +686,26 @@ export const August = () => {
     const balance = income - expense;
 
     return (
-        <div className="flex justify-center items-center my-5">
-            <div className="card w-full bg-neutral shadow-xl card-compact">
+        <div className="flex items-center justify-center my-5">
+            <div className="w-full shadow-xl card bg-neutral card-compact">
                 <div className="card-body">
-                    <h2 className="card-title">August</h2>
-                    <div className="flex justify-between items-center">
+                    <h2 className="font-bold card-title text-sky-400">
+                        August
+                    </h2>
+                    <div className="flex items-center justify-between">
                         <div>Income: RM {income}</div>
                         <div>Expenses: RM {expense}</div>
-                        <div>Balance: RM {balance}</div>
+                        <div className="font-medium text-amber-200">
+                            Balance: RM {balance}
+                        </div>
                     </div>
-                    <div className="card-actions justify-end">
-                        <Link to="/">View transactions</Link>
+                    <div className="justify-end mt-8 card-actions">
+                        <Link
+                            to="/"
+                            className="px-4 py-1 font-medium rounded-md text-slate-800 bg-sky-400 hover:bg-sky-600 hover:text-white"
+                        >
+                            View transactions
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -714,17 +776,26 @@ export const September = () => {
     const balance = income - expense;
 
     return (
-        <div className="flex justify-center items-center my-5">
-            <div className="card w-full bg-neutral shadow-xl card-compact">
+        <div className="flex items-center justify-center my-5">
+            <div className="w-full bg-gray-700 shadow-xl card card-compact">
                 <div className="card-body">
-                    <h2 className="card-title">September</h2>
-                    <div className="flex justify-between items-center">
+                    <h2 className="font-bold card-title text-sky-400">
+                        September
+                    </h2>
+                    <div className="flex items-center justify-between">
                         <div>Income: RM {income}</div>
                         <div>Expenses: RM {expense}</div>
-                        <div>Balance: RM {balance}</div>
+                        <div className="font-medium text-amber-200">
+                            Balance: RM {balance}
+                        </div>
                     </div>
-                    <div className="card-actions justify-end">
-                        <Link to="/">View transactions</Link>
+                    <div className="justify-end mt-8 card-actions">
+                        <Link
+                            to="/"
+                            className="px-4 py-1 font-medium rounded-md text-slate-800 bg-sky-400 hover:bg-sky-600 hover:text-white"
+                        >
+                            View transactions
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -795,17 +866,26 @@ export const October = () => {
     const balance = income - expense;
 
     return (
-        <div className="flex justify-center items-center my-5">
-            <div className="card w-full bg-neutral shadow-xl card-compact">
+        <div className="flex items-center justify-center my-5">
+            <div className="w-full shadow-xl card bg-neutral card-compact">
                 <div className="card-body">
-                    <h2 className="card-title">October</h2>
-                    <div className="flex justify-between items-center">
+                    <h2 className="font-bold card-title text-sky-400">
+                        October
+                    </h2>
+                    <div className="flex items-center justify-between">
                         <div>Income: RM {income}</div>
                         <div>Expenses: RM {expense}</div>
-                        <div>Balance: RM {balance}</div>
+                        <div className="font-medium text-amber-200">
+                            Balance: RM {balance}
+                        </div>
                     </div>
-                    <div className="card-actions justify-end">
-                        <Link to="/">View transactions</Link>
+                    <div className="justify-end mt-8 card-actions">
+                        <Link
+                            to="/"
+                            className="px-4 py-1 font-medium rounded-md text-slate-800 bg-sky-400 hover:bg-sky-600 hover:text-white"
+                        >
+                            View transactions
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -876,17 +956,26 @@ export const November = () => {
     const balance = income - expense;
 
     return (
-        <div className="flex justify-center items-center my-5">
-            <div className="card w-full bg-neutral shadow-xl card-compact">
+        <div className="flex items-center justify-center my-5">
+            <div className="w-full bg-gray-700 shadow-xl card card-compact">
                 <div className="card-body">
-                    <h2 className="card-title">November</h2>
-                    <div className="flex justify-between items-center">
+                    <h2 className="font-bold card-title text-sky-400">
+                        November
+                    </h2>
+                    <div className="flex items-center justify-between">
                         <div>Income: RM {income}</div>
                         <div>Expenses: RM {expense}</div>
-                        <div>Balance: RM {balance}</div>
+                        <div className="font-medium text-amber-200">
+                            Balance: RM {balance}
+                        </div>
                     </div>
-                    <div className="card-actions justify-end">
-                        <Link to="/">View transactions</Link>
+                    <div className="justify-end mt-8 card-actions">
+                        <Link
+                            to="/"
+                            className="px-4 py-1 font-medium rounded-md text-slate-800 bg-sky-400 hover:bg-sky-600 hover:text-white"
+                        >
+                            View transactions
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -957,17 +1046,26 @@ export const December = () => {
     const balance = income - expense;
 
     return (
-        <div className="flex justify-center items-center my-5">
-            <div className="card w-full bg-neutral shadow-xl card-compact">
+        <div className="flex items-center justify-center my-5">
+            <div className="w-full shadow-xl card bg-neutral card-compact">
                 <div className="card-body">
-                    <h2 className="card-title">December</h2>
-                    <div className="flex justify-between items-center">
+                    <h2 className="font-bold card-title text-sky-400">
+                        December
+                    </h2>
+                    <div className="flex items-center justify-between">
                         <div>Income: RM {income}</div>
                         <div>Expenses: RM {expense}</div>
-                        <div>Balance: RM {balance}</div>
+                        <div className="font-medium text-amber-200">
+                            Balance: RM {balance}
+                        </div>
                     </div>
-                    <div className="card-actions justify-end">
-                        <Link to="/">View transactions</Link>
+                    <div className="justify-end mt-8 card-actions">
+                        <Link
+                            to="/"
+                            className="px-4 py-1 font-medium rounded-md text-slate-800 bg-sky-400 hover:bg-sky-600 hover:text-white"
+                        >
+                            View transactions
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,13 @@ import {
     AdminRoutes,
 } from "./components/Routes";
 import { Login, Register } from "./components/Authentication";
-import { Daily, Monthly, Weekly } from "./components/Customer";
+import {
+    Daily,
+    Monthly,
+    MultiSearch,
+    SingleSearch,
+    Weekly,
+} from "./components/Customer";
 import { checkAuth } from "./components/api/users";
 
 function App() {
@@ -95,6 +101,26 @@ function App() {
                             <>
                                 <Navbar />
                                 <Monthly />
+                                <Foot />
+                            </>
+                        }
+                    />
+                    <Route
+                        path="/single"
+                        element={
+                            <>
+                                <Navbar />
+                                <SingleSearch />
+                                <Foot />
+                            </>
+                        }
+                    />
+                    <Route
+                        path="/multi"
+                        element={
+                            <>
+                                <Navbar />
+                                <MultiSearch />
                                 <Foot />
                             </>
                         }

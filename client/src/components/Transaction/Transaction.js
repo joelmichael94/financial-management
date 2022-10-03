@@ -5,6 +5,7 @@ import {
     addTransaction,
     deleteTransaction,
     getAllTransactions,
+    updateTransaction,
 } from "../api/transactions";
 import { ColorRing, Oval } from "react-loader-spinner";
 import { checkAuth } from "../api/users";
@@ -299,8 +300,6 @@ export const Transaction = ({
         _id,
     },
 }) => {
-    const { isAuth, user } = checkAuth();
-    const [editing, setEditing] = useState(false);
     const navigate = useNavigate();
     const queryClient = useQueryClient();
     const dateStr = new Date(date).toString();
@@ -360,6 +359,236 @@ export const Transaction = ({
                             alt=""
                             className="mask mask-squircle w-2/5"
                         />
+                    </div>
+                    <div className="flex flex-col justify-center items-evenly gap-2 mt-5">
+                        <label
+                            className="border border-slate-500 bg-yellow-300 rounded text-black modal-button text-center"
+                            htmlFor="my-modal-7"
+                        >
+                            Edit
+                        </label>
+                        {<EditTransaction data={editData} />}
+                        <button
+                            className="px-2 py-1 border border-slate-500 bg-red-500 text-white rounded text-center"
+                            onClick={() => mutation.mutate(_id)}
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export const EditTransaction = ({ data }) => {
+    const [transaction, setTransaction] = useState({
+        name: data.name,
+        transactionType: data.transactionType,
+        description: data.description,
+        amount: data.amount,
+        category: data.category,
+        date: data.date,
+        image: data.image,
+    });
+
+    const [image, setImage] = useState({});
+    const queryClient = useQueryClient();
+    const navigate = useNavigate();
+    const [check, setCheck] = useState(false);
+
+    const mutation = useMutation(
+        ({ transaction, image }) =>
+            updateTransaction(transaction, image, data._id),
+        {
+            onSuccess: () => {
+                queryClient.invalidateQueries(["transactions"]);
+                navigate("/");
+            },
+        }
+    );
+
+    const onChangeHandler = (e) => {
+        setTransaction({ ...transaction, [e.target.name]: e.target.value });
+    };
+
+    const imageHandler = (e) => {
+        setImage(e.target.files[0]);
+    };
+
+    const onSubmitHandler = (e) => {
+        setCheck(!check);
+        e.preventDefault();
+        mutation.mutate({ transaction, image });
+    };
+
+    return (
+        <div>
+            <input
+                type="checkbox"
+                id="my-modal-7"
+                className="modal-toggle bg-white"
+                onClick={() => setCheck(!check)}
+                defaultChecked={check}
+            />
+
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <div className="modal-action">
+                        <label
+                            htmlFor="my-modal-7"
+                            className="btn btn-sm btn-circle absolute right-2 top-2"
+                        >
+                            X
+                        </label>
+                    </div>
+                    <div className="flex flex-col justify-center items-center">
+                        <h3 className="font-bold text-lg">
+                            Editing {transaction.name}
+                        </h3>
+                        <form
+                            encType="multipart/form-data"
+                            onSubmit={onSubmitHandler}
+                            className="form-control"
+                        >
+                            <div className="py-2 relative">
+                                <input
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    className="peer w-full border-2 rounded-md input input-ghost border-neutral placeholder-transparent"
+                                    onChange={onChangeHandler}
+                                    defaultValue={transaction.name}
+                                    required={true}
+                                    placeholder="Name"
+                                />
+                                <label
+                                    htmlFor="name"
+                                    className="absolute left-0 -top-3.5 text-neutral text-sm peer-placeholder-shown:text-base text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-neutral peer-focus:text-sm"
+                                >
+                                    Name
+                                </label>
+                            </div>
+
+                            <div className="py-2 relative">
+                                <input
+                                    type="number"
+                                    name="amount"
+                                    id="amount"
+                                    className="w-full border-2 rounded-md input input-ghost border-neutral peer placeholder-transparent"
+                                    onChange={onChangeHandler}
+                                    min="0"
+                                    step="0.01"
+                                    required={true}
+                                    placeholder="Amount"
+                                    defaultValue={transaction.amount}
+                                />
+                                <label
+                                    htmlFor="amount"
+                                    className="absolute left-0 -top-3.5 text-neutral text-sm peer-placeholder-shown:text-base text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-neutral peer-focus:text-sm"
+                                >
+                                    Amount
+                                </label>
+                            </div>
+
+                            <div className="py-2 relative">
+                                <textarea
+                                    name="description"
+                                    id="description"
+                                    cols="30"
+                                    rows="1"
+                                    onChange={onChangeHandler}
+                                    className="w-full border-2 rounded-md input input-ghost border-neutral peer placeholder-transparent"
+                                    defaultValue={transaction.description}
+                                    placeholder="Description"
+                                ></textarea>
+                                <label
+                                    htmlFor="description"
+                                    className="absolute left-0 -top-3.5 text-neutral text-sm peer-placeholder-shown:text-base text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-neutral peer-focus:text-sm"
+                                >
+                                    Description
+                                </label>
+                            </div>
+
+                            <div className="py-2">
+                                <label>Transaction Type</label>
+                                <select
+                                    name="transactionType"
+                                    onChange={onChangeHandler}
+                                    className="w-full border-2 rounded-md input input-ghost border-neutral"
+                                    defaultValue={transaction.transactionType}
+                                    required={true}
+                                >
+                                    <option disabled>
+                                        ---Select Transaction Type---
+                                    </option>
+                                    <option value="Expense">Expense</option>
+                                    <option value="Income">Income</option>
+                                </select>
+                            </div>
+
+                            <div className="py-2">
+                                <label>Category</label>
+                                <select
+                                    name="category"
+                                    onChange={onChangeHandler}
+                                    className="w-full border-2 rounded-md input input-ghost border-neutral"
+                                    defaultValue={transaction.category}
+                                    required={true}
+                                >
+                                    <option disabled>
+                                        ---Select Category---
+                                    </option>
+                                    <option value="None">None</option>
+                                    <option value="Salary">Salary</option>
+                                    <option value="Food">Food</option>
+                                    <option value="Rent">Rent</option>
+                                    <option value="Bills">Bills</option>
+                                </select>
+                            </div>
+
+                            <div className="py-2">
+                                <label>Date</label>
+                                <input
+                                    type="date"
+                                    name="date"
+                                    className="w-full border-2 rounded-md input input-ghost border-neutral"
+                                    onChange={onChangeHandler}
+                                    defaultValue={transaction.date}
+                                />
+                            </div>
+
+                            <div className="py-2">
+                                <label>Image</label>
+                                <input
+                                    type="file"
+                                    name="image"
+                                    onChange={imageHandler}
+                                    className="w-full border-2 rounded-md input input-ghost border-neutral"
+                                />
+                            </div>
+
+                            <div className="flex justify-center items-center">
+                                <button className="btn btn-ghost font-extrabold text-lg">
+                                    {mutation.isLoading ? (
+                                        <Oval
+                                            height={80}
+                                            width={80}
+                                            color="#4fa94d"
+                                            wrapperStyle={{}}
+                                            wrapperClass=""
+                                            visible={true}
+                                            ariaLabel="oval-loading"
+                                            secondaryColor="#4fa94d"
+                                            strokeWidth={2}
+                                            strokeWidthSecondary={2}
+                                        />
+                                    ) : (
+                                        "Confirm Edit"
+                                    )}
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

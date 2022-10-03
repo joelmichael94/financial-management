@@ -26,35 +26,30 @@ export const Login = () => {
     };
 
     return (
-        <div>
-            <div>
+        <div className="h-[70vh] flex flex-col justify-center items-center gap-6 text-lg">
+            <div className="flex flex-col justify-center w-1/4">
                 <label>Username</label>
                 <input
                     type="text"
                     name="username"
                     onChange={onChangeHandler}
-                    className="border border-slate-500 px-2 py-1 rounded m-2"
+                    className="px-2 py-1 text-white bg-transparent border-b-2 border-slate-500 focus:border-b-2 focus:outline-none focus:ring-0 hover:border-white "
                 />
             </div>
-            <div>
+
+            <div className="flex flex-col justify-center w-1/4">
+                <label>Password</label>
                 <input
                     type="password"
                     name="password"
                     onChange={onChangeHandler}
-                    className="border border-slate-500 px-2 py-1 rounded m-2 peer placeholder-transparent"
-                    id="password"
-                    placeholder="Password"
+                    className="px-2 py-1 text-white bg-transparent border-b-2 border-slate-500 focus:border-b-2 focus:outline-none focus:ring-0 hover:border-white"
                 />
-                <label
-                    htmlFor="password"
-                    className="absolute left-0 -top-3.5 text-neutral text-sm peer-placeholder-shown:text-base text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-neutral peer-focus:text-sm"
-                >
-                    Password
-                </label>
             </div>
+
             <button
                 onClick={onSubmitHandler}
-                className="bg-slate-300 px-2 py-1 rounded m-2 hover:border hover:border-slate-600"
+                className="px-6 py-1 font-semibold text-white border-2 rounded-lg 0 border-slate-500"
             >
                 Login
             </button>
@@ -86,37 +81,37 @@ export const Register = () => {
     };
 
     return (
-        <div>
-            <div>
+        <div className="h-[70vh] flex flex-col justify-center items-center gap-6">
+            <div className="flex flex-col justify-center w-1/4">
                 <label>Username</label>
                 <input
                     type="text"
                     name="username"
                     onChange={onChangeHandler}
-                    className="border border-slate-500 px-2 py-1 rounded m-2"
+                    className="px-2 py-1 text-white bg-transparent border-b-2 border-slate-500 focus:border-b-2 focus:outline-none focus:ring-0 hover:border-white"
                 />
             </div>
-            <div>
+            <div className="flex flex-col justify-center w-1/4">
                 <label>Email</label>
                 <input
                     type="email"
                     name="email"
                     onChange={onChangeHandler}
-                    className="border border-slate-500 px-2 py-1 rounded m-2"
+                    className="px-2 py-1 text-white bg-transparent border-b-2 border-slate-500 focus:border-b-2 focus:outline-none focus:ring-0 hover:border-white"
                 />
             </div>
-            <div>
+            <div className="flex flex-col justify-center w-1/4">
                 <label>Password</label>
                 <input
                     type="password"
                     name="password"
                     onChange={onChangeHandler}
-                    className="border border-slate-500 px-2 py-1 rounded m-2"
+                    className="px-2 py-1 text-white bg-transparent border-b-2 border-slate-500 focus:border-b-2 focus:outline-none focus:ring-0 hover:border-white"
                 />
             </div>
             <button
                 onClick={onSubmitHandler}
-                className="bg-slate-300 px-2 py-1 rounded m-2 hover:border hover:border-slate-600"
+                className="px-6 py-1 font-semibold text-white border-2 rounded-lg 0 border-slate-500"
             >
                 Register
             </button>

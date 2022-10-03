@@ -25,49 +25,44 @@ router.get("/", auth, async (req, res) => {
     }
 });
 
-// GET WEEKLY TRANSACTIONS
-router.get("/weekly", auth, async (req, res) => {
+// GET TRANSACTION BY DATE
+router.get("/:id", auth, async (req, res) => {
     try {
         let transactions = await Transaction.find({ userId: req.user._id });
+        if (transactions.length === 0)
+            return res.json({ message: "No transactions found" });
 
-        if (transactions.length == 0) {
-            return res.json({ message: "No weekly transactions found" });
-        }
+        let transaction = await Transaction.find({ date: req.params.id });
+        console.log(transaction);
+        if (!transaction) return res.json({ message: "Transaction not found" });
 
-        const now = new Date();
-        const firstDay = new Date(
-            now.setDate(
-                now.getDate() - now.getDay() + (now.getDay() === 0 ? -6 : 1)
-            )
-        );
-        const lastDay = new Date(
-            now.setDate(now.getDate() - (now.getDay() - 1) + 6)
-        );
-
-        const filters = {
-            date: {
-                $gte: firstDay,
-                $lt: lastDay,
-            },
-        };
-
-        return res.json(transactions.find({}).where(filters));
+        return res.json({ transaction, message: "transaction found" });
     } catch (e) {
         return res.status(400).json({
             e,
-            message: "Failed to fetch weekly transactions",
+            message: "Transaction cannot be found",
         });
     }
 });
 
-// GET TRANSACTION BY ID
-router.get("/:id", auth, async (req, res) => {
+router.get("/:newStart/:newEnd", auth, async (req, res) => {
     try {
-        let transaction = await Transaction.findById(req.params.id);
+        const start = req.params.newStart;
+        const end = req.params.newEnd;
+        const newStart = new Date(start);
+        const newEnd = new Date(end);
+        const transactions = await Transaction.find({ userId: req.user._id });
 
-        if (!transaction) return res.json({ message: "Transaction not found" });
+        if (transactions.length === 0)
+            return res.json({ message: "No transactions found" });
 
-        return res.json(transaction);
+        const results = await Transaction.find({
+            date: { $gte: newStart, $lt: newEnd },
+        });
+
+        if (!results)
+            return res.json({ message: "No transactions within this range" });
+        return res.json({ results, message: "Transactions found" });
     } catch (e) {
         return res.status(400).json({
             e,
@@ -155,7 +150,7 @@ router.put("/:id", auth, async (req, res) => {
         const form = new formidable.IncomingForm();
 
         form.parse(req, async (e, fields, files) => {
-            if (files.image.name !== "") {
+            if (files.image) {
                 let oldPath = files.image.filepath;
                 let newPath =
                     path.join(__dirname, "../public") +
@@ -169,7 +164,7 @@ router.put("/:id", auth, async (req, res) => {
             delete fields.image;
             await Transaction.findOneAndUpdate(
                 {
-                    id: req.params.id,
+                    _id: req.params.id,
                 },
                 fields,
                 {

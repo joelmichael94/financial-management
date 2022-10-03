@@ -1,8 +1,18 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Modal, Button } from "react-daisyui";
 import { ColorRing } from "react-loader-spinner";
-import { getAllTransactions } from "../api/transactions";
+import {
+    getAllTransactions,
+    searchByDate,
+    searchByRange,
+} from "../api/transactions";
 import { useQuery } from "react-query";
-import { AddTransactionBttn, TransactionList } from "../Transaction";
+import {
+    AddTransactionBttn,
+    Transaction,
+    TransactionList,
+} from "../Transaction";
 import {
     Monday,
     Tuesday,
@@ -28,18 +38,147 @@ import {
 } from "./Months";
 
 export const Period = () => {
+    const [visible, setVisible] = useState(false);
+    const [date, setDate] = useState();
+    const [range, setRange] = useState({
+        start: new Date(),
+        end: new Date(),
+    });
+    const [isRange, setIsRange] = useState(false);
+
+    const toggleVisible = () => {
+        setVisible(!visible);
+    };
+    const navigate = useNavigate();
+
+    const onRangeChange = (e) => {
+        setRange({ ...range, [e.target.name]: e.target.value });
+    };
+
+    const searchDateSubmit = async (e) => {
+        e.preventDefault();
+        const res = await searchByDate(date);
+        navigate("/single", { state: { data: res } });
+        toggleVisible();
+    };
+
+    const searchRangeSubmit = async (e) => {
+        e.preventDefault();
+        const res = await searchByRange(range);
+        console.log(res);
+        navigate("/multi", { state: { data: res } });
+        toggleVisible();
+    };
+
     return (
-        <div className="flex justify-start py-3 px-5 gap-5">
-            <Link to="/daily" className="btn btn-ghost font-extrabold">
-                Daily
-            </Link>
-            <Link to="/weekly" className="btn btn-ghost font-extrabold">
-                Weekly
-            </Link>
-            <Link to="/monthly" className="btn btn-ghost font-extrabold">
-                Monthly
-            </Link>
-        </div>
+        <>
+            <div className="flex justify-between px-6 py-4 my-6">
+                <div className="flex justify-start gap-5 ">
+                    <Link to="/daily" className="font-extrabold btn btn-ghost">
+                        Daily
+                    </Link>
+                    <Link to="/weekly" className="font-extrabold btn btn-ghost">
+                        Weekly
+                    </Link>
+                    <Link
+                        to="/monthly"
+                        className="font-extrabold btn btn-ghost"
+                    >
+                        Monthly
+                    </Link>
+                </div>
+                <div>
+                    <button
+                        className="px-6 py-2.5 text-white rounded-md bg-slate-700 font-semibold"
+                        onClick={toggleVisible}
+                    >
+                        Search By Date
+                    </button>
+                </div>
+            </div>
+            {/* modal */}
+            <div className="font-sans">
+                <Modal open={visible}>
+                    <Modal.Header className="font-bold">Search</Modal.Header>
+                    <Modal.Body>
+                        {!isRange ? (
+                            <form
+                                className="w-full"
+                                onSubmit={searchDateSubmit}
+                            >
+                                <div className="flex flex-col ">
+                                    <label>Search by Date</label>
+                                    <input
+                                        type="date"
+                                        className="px-4 mt-4 rounded-md bg-slate-700"
+                                        onChange={(e) =>
+                                            setDate(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div className="flex justify-between my-2">
+                                    <button
+                                        type="submit"
+                                        className="px-4 py-1.5 text-white rounded-md bg-slate-700"
+                                    >
+                                        Search
+                                    </button>
+                                    <button
+                                        onClick={() => setIsRange(!isRange)}
+                                        className="text-white hover:underline"
+                                        type="button"
+                                    >
+                                        Search by range instead
+                                    </button>
+                                </div>
+                            </form>
+                        ) : null}
+                        {isRange ? (
+                            <form
+                                className="w-full mt-10"
+                                onSubmit={searchRangeSubmit}
+                            >
+                                <div className="flex flex-col w-full">
+                                    <label>Or search by Range</label>
+                                    <div className="flex gap-2 mt-4">
+                                        <input
+                                            type="date"
+                                            name="start"
+                                            className="w-full px-4 rounded-md bg-slate-700"
+                                            onChange={onRangeChange}
+                                        />
+                                        <input
+                                            type="date"
+                                            name="end"
+                                            className="w-full px-4 rounded-md bg-slate-700"
+                                            onChange={onRangeChange}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex justify-between my-2">
+                                    <button
+                                        type="submit"
+                                        className="px-4 py-1.5 text-white rounded-md bg-slate-700"
+                                    >
+                                        Search
+                                    </button>
+                                    <button
+                                        onClick={() => setIsRange(!isRange)}
+                                        className="text-white hover:underline"
+                                        type="button"
+                                    >
+                                        Search by date
+                                    </button>
+                                </div>
+                            </form>
+                        ) : null}
+                    </Modal.Body>
+                    <Modal.Actions>
+                        <Button onClick={toggleVisible}>Close</Button>
+                    </Modal.Actions>
+                </Modal>
+            </div>
+        </>
     );
 };
 
@@ -165,7 +304,7 @@ export const Monthly = () => {
             {<Period />}
             {<Totals />}
             {<AddTransactionBttn />}
-            <div className="mb-10 grid grid-cols-3 gap-5 mx-5">
+            <div className="mb-10 grid grid-cols-3 gap-5 mx-5 px-32">
                 <January />
                 <February />
                 <March />
@@ -269,6 +408,48 @@ export const Totals = () => {
                 <h1 className="text-red-500">Expenses: RM {expense}</h1>
                 <h1 className="text-yellow-400">Balance: RM {balance}</h1>
             </div>
+        </div>
+    );
+};
+
+export const SingleSearch = () => {
+    const location = useLocation();
+    const data = location.state.data.transaction;
+
+    return (
+        <div>
+            {<Period />}
+            {<Totals />}
+            {<AddTransactionBttn />}
+            <h1 className="text-center text-4xl font-bold py-5 underline">
+                Search Results
+            </h1>
+            {data.length > 0
+                ? data.map((transaction, i) => (
+                      <Transaction data={transaction} key={i} />
+                  ))
+                : null}
+        </div>
+    );
+};
+
+export const MultiSearch = () => {
+    const location = useLocation();
+    const data = location.state.data.results;
+
+    return (
+        <div>
+            {<Period />}
+            {<Totals />}
+            {<AddTransactionBttn />}
+            <h1 className="text-center text-4xl font-bold py-5 underline">
+                Search Results
+            </h1>
+            {data.length > 0
+                ? data.map((transaction, i) => (
+                      <Transaction data={transaction} key={i} />
+                  ))
+                : null}
         </div>
     );
 };

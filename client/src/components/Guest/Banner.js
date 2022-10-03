@@ -7,13 +7,13 @@ export const BannerTop = () => {
 
     return (
         <>
-            <div className="flex justify-evenly items-center px-48 py-44">
-                <div className="flex flex-col justify-center items-start w-2/5 text-left">
+            <div className="flex items-center h-screen px-48 justify-evenly py-44">
+                <div className="flex flex-col items-start justify-center w-3/5 text-left">
                     <div>
                         <h1 className="text-5xl text-blue-300 font-bold">
                             Lorem ipsum dolor
                         </h1>
-                        <p className="py-12">
+                        <p className="py-12 text-xl">
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit, sed do eiusmod tempor incididunt ut labore et
                             dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -21,7 +21,10 @@ export const BannerTop = () => {
                         </p>
                     </div>
                     <div>
-                        <button onClick={() => navigate("/register")}>
+                        <button
+                            onClick={() => navigate("/register")}
+                            className="px-6 py-2 border-2 rounded-lg border-slate-400 hover:bg-slate-600 hover:text-white"
+                        >
                             Sign Up Here
                         </button>
                     </div>
@@ -36,13 +39,13 @@ export const BannerMid = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="bg-neutral flex flex-col justify-center items-center py-24">
+        <div className="flex flex-col items-center justify-center py-24 bg-neutral">
             <div>
                 <h1 className="text-5xl text-blue-300 font-bold">
                     Lorem ipsum dolor
                 </h1>
             </div>
-            <div className="flex items-center justify-evenly px-48 pt-10">
+            <div className="flex items-center px-48 pt-10 justify-evenly">
                 <img
                     src={bannerMid}
                     alt="bannerMid"
