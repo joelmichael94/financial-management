@@ -26,13 +26,18 @@ router.get("/", auth, async (req, res) => {
 });
 
 // GET TRANSACTION BY DATE
-router.get("/:id", auth, async (req, res) => {
+router.get("/:newDate", auth, async (req, res) => {
     try {
         let transactions = await Transaction.find({ userId: req.user._id });
         if (transactions.length === 0)
             return res.json({ message: "No transactions found" });
 
-        let transaction = await Transaction.find({ date: req.params.id });
+        const date = req.params.newDate;
+        const newDate = new Date(date);
+        console.log(newDate);
+
+        let transaction = await Transaction.find({ date: newDate });
+
         console.log(transaction);
         if (!transaction) return res.json({ message: "Transaction not found" });
 

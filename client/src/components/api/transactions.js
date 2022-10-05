@@ -14,7 +14,7 @@ export const getAllTransactions = async () => {
 
 export const addTransaction = async (transaction, image, user) => {
     const date = new Date(transaction.date);
-    date.setHours(0, 0, 0, 0);
+    date.setHours(0,0,0);
     const formData = new FormData();
     formData.append("userId", user.data._id);
     formData.append("name", transaction.name);
@@ -77,10 +77,10 @@ export const updateTransaction = async (transaction, image, _id) => {
 };
 
 export const searchByDate = async (date) => {
-    const id = new Date(date);
+    const newDate = new Date(date);
 
     const res = await fetch(
-        `${process.env.REACT_APP_API_URI}/transactions/${id}`,
+        `${process.env.REACT_APP_API_URI}/transactions/${newDate}`,
         {
             method: "GET",
             headers: {
