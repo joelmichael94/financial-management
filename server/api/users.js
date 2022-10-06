@@ -126,7 +126,10 @@ router.post(
                             message: "Cannot generate token",
                         });
                     }
-                    return res.send(token);
+                    return res.json({
+                        token,
+                        message: "Logged in succesfully",
+                    });
                 }
             );
         } catch (e) {
